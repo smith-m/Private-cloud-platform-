@@ -99,7 +99,16 @@ export default class Storage extends React.Component<Props, State> {
 			...this.state,
 			changed: true,
 			storage: storage,
-		});
+		}, () => { // React will only re-render once at the end (that's batching!)
+            if(!this.state.changed) {
+                this.setState({
+                    ...this.state,
+                    message: '',
+                    changed: false,
+                    storage: null,
+                });
+            }
+        });
 	}
 
 	onSave = (): void => {
@@ -114,17 +123,6 @@ export default class Storage extends React.Component<Props, State> {
 				changed: false,
 				disabled: false,
 			});
-
-			setTimeout((): void => {
-				if (!this.state.changed) {
-					this.setState({
-						...this.state,
-						message: '',
-						changed: false,
-						storage: null,
-					});
-				}
-			}, 3000);
 		}).catch((): void => {
 			this.setState({
 				...this.state,

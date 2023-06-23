@@ -69,59 +69,59 @@ export default class Device extends React.Component<Props, State> {
 
 		device[name] = val;
 
-		this.setState({
-			...this.state,
+		this.setState((prevState) => ({
+			...prevState,
 			changed: true,
 			device: device,
-		});
+		}));
 	}
 
 	onSave = (): void => {
-		this.setState({
-			...this.state,
+		this.setState((prevState) => ({
+			...prevState,
 			disabled: true,
-		});
+		}));
 		DeviceActions.commit(this.state.device).then((): void => {
 			Alert.success('Device name updated');
 
-			this.setState({
-				...this.state,
+			this.setState((prevState) => ({
+				...prevState,
 				disabled: false,
 				changed: false,
-			});
+			}));
 
 			setTimeout((): void => {
 				if (!this.state.changed) {
-					this.setState({
-						...this.state,
+					this.setState((prevState) => ({
+						...prevState,
 						changed: false,
 						device: null,
-					});
+					}));
 				}
 			}, 3000);
 		}).catch((): void => {
-			this.setState({
-				...this.state,
+			this.setState((prevState) => ({
+				...prevState,
 				disabled: false,
-			});
+			}));
 		});
 	}
 
 	onDelete = (): void => {
-		this.setState({
-			...this.state,
+		this.setState((prevState) => ({
+			...prevState,
 			disabled: true,
-		});
+		}));
 		DeviceActions.remove(this.props.device.id).then((): void => {
-			this.setState({
-				...this.state,
+			this.setState((prevState) => ({
+				...prevState,
 				disabled: false,
-			});
+			}));
 		}).catch((): void => {
-			this.setState({
-				...this.state,
+			this.setState((prevState) => ({
+				...prevState,
 				disabled: false,
-			});
+			}));
 		});
 	}
 

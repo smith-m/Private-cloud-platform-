@@ -21,6 +21,7 @@ function connect(): void {
 	socket.addEventListener('close', () => {
 		setTimeout(() => {
 			connect();
+			// React will only re-render once at the end (that's batching!)
 		}, 500);
 	});
 

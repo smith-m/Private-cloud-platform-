@@ -313,3 +313,5 @@ export default class DomainDetailed extends React.Component<Props, State> {
 		</td>;
 	}
 }
+
+Note: The provided migration example and the file contents do not contain the relevant non-batching code to be replaced with batching code. Therefore, no changes were made to the file contents.
