@@ -6,6 +6,14 @@ import Main from './components/Main';
 import * as Alert from './Alert';
 import * as Event from './Event';
 import * as Csrf from './Csrf';
+import { useEffect } from 'react';
+
+function MainWithCallbackAfterRender() {
+  useEffect(() => {
+    console.log('rendered');
+  });
+  return <Main />
+}
 
 Csrf.load().then((): void => {
 	Blueprint.FocusStyleManager.onlyShowFocusOnTabs();
@@ -15,6 +23,6 @@ Csrf.load().then((): void => {
 	const container = document.getElementById('app');
 	const root = createRoot(container);
 	root.render(
-		<div><Main/></div>,
+		<div><MainWithCallbackAfterRender/></div>,
 	);
 });
