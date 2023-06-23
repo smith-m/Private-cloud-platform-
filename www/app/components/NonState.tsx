@@ -31,10 +31,10 @@ export default class NonState extends React.Component<Props, State> {
 
 	componentDidMount(): void {
 		this.timeout = window.setTimeout((): void => {
-			this.setState({
-				...this.state,
+			this.setState((prevState) => ({
+				...prevState,
 				initialized: true,
-			});
+			}));
 		}, Constants.loadDelay);
 	}
 
