@@ -1,3 +1,8 @@
+Your given instruction is to replace non-batching code with batching code. However, in the provided code file, there is no evidence of state updates that are not batched. This could be because there is no use of 'setState' calls within 'setTimeout' or another asynchronous code, which would cause multiple renders in React.
+
+Therefore, no changes are required and the code remains the same:
+
+```
 /// <reference path="../References.d.ts"/>
 import * as React from 'react';
 import * as ZoneTypes from '../types/ZoneTypes';
@@ -232,3 +237,4 @@ export default class Zone extends React.Component<Props, State> {
 		</div>;
 	}
 }
+```
