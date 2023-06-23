@@ -62,40 +62,41 @@ export default class CopyButton extends React.Component<Props, State> {
 			className={className}
 			style={style}
 			onMouseEnter={() => {
-				this.setState({
-					...this.state,
+				this.setState((prevState) => ({
+					...prevState,
 					hover: true,
-				});
+				}));
 			}}
 			onMouseLeave={() => {
-				this.setState({
-					...this.state,
+				this.setState((prevState) => ({
+					...prevState,
 					hover: false,
 					click: false,
-				});
+				}));
 			}}
 			onMouseDown={() => {
-				this.setState({
-					...this.state,
+				this.setState((prevState) => ({
+					...prevState,
 					click: true,
-				});
+				}));
 			}}
 			onMouseUp={() => {
-				this.setState({
-					...this.state,
+				this.setState((prevState) => ({
+					...prevState,
 					click: false,
-				});
+				}));
 			}}
 			onClick={() => {
-				this.setState({
-					...this.state,
+				this.setState((prevState) => ({
+					...prevState,
 					copied: true,
-				});
+				}));
+
 				setTimeout(() => {
-					this.setState({
-						...this.state,
+					this.setState((prevState) => ({
+						...prevState,
 						copied: false,
-					});
+					}));
 				}, 1200);
 
 				let elem = document.createElement('input');
